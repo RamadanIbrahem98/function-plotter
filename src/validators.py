@@ -39,10 +39,10 @@ def compile_equation(equation: str) -> str:
   else:
     raise SyntaxError
 
-def get_equation_result(equation: str, x: float) -> float|str:
+def get_equation_result(equation: str, x: float) -> float:
   """
-  get_equation_result(equation: str, x: float) -> float|str
-  Returns the result of an equation string or MathError.
+  get_equation_result(equation: str, x: float) -> float
+  Returns the result of an equation string (float('inf') in case of Division By Zero).
 
   equation: The equation string to evaluate.
   x: The x value to evaluate the equation at.
