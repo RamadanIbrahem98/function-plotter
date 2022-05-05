@@ -72,7 +72,7 @@ class MyApp(QMainWindow, Ui_MainWindow):
     else:
       self.graph_btn.setEnabled(True)
       y_data = []
-      x_data = np.arange(x_min, x_max, x_step)
+      x_data = np.arange(x_min, x_max + 1, x_step)
       for point in x_data:
         y = get_equation_result(equation, point)
         if type(y) == float:
