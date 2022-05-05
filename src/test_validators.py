@@ -1,5 +1,5 @@
 import unittest
-from src.validators import validate_equation, compile_equation, get_equation_result
+from validators import validate_equation, compile_equation, get_equation_result
   
 class TestValidators(unittest.TestCase):
 
