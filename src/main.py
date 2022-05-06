@@ -7,6 +7,13 @@ from validators import get_equation_result, validate_equation
 import pyqtgraph as pg
 import numpy as np
 
+def warning_dialog(title:str, text: str) -> None:
+  msg = QtWidgets.QMessageBox()
+  msg.setIcon(QtWidgets.QMessageBox.Warning)
+  msg.setText(text)
+  msg.setWindowTitle(title)
+  msg.exec_()
+
 class MyApp(QMainWindow, Ui_MainWindow):
   def __init__(self):
     super(self.__class__, self).__init__()
@@ -41,33 +48,18 @@ class MyApp(QMainWindow, Ui_MainWindow):
     x_step = self.range_step_spin.value()
 
     if x_min >= x_max:
+      warning_dialog("Invalid Range", "From has to be less than To.")
       self.graph_btn.setEnabled(False)
-      msg = QtWidgets.QMessageBox()
-      msg.setIcon(QtWidgets.QMessageBox.Warning)
-      msg.setText("Invalid Range")
-      msg.setInformativeText("From has to be less than To")
-      msg.setWindowTitle("Invalid Range")
-      msg.exec_()
       return
 
     if x_step >= x_max - x_min:
+      warning_dialog("Invalid Step", "Step is to big for the range.")
       self.graph_btn.setEnabled(False)
-      msg = QtWidgets.QMessageBox()
-      msg.setIcon(QtWidgets.QMessageBox.Warning)
-      msg.setText("Invalid Range")
-      msg.setInformativeText("Step is to big for the range")
-      msg.setWindowTitle("Invalid Range")
-      msg.exec_()
       return
 
     if not validate_equation(equation):
+      warning_dialog("Invalid Equation", "Please enter a valid equation.")
       self.graph_btn.setEnabled(False)
-      msg = QtWidgets.QMessageBox()
-      msg.setIcon(QtWidgets.QMessageBox.Warning)
-      msg.setText("Invalid equation")
-      msg.setInformativeText("Please enter a valid equation.")
-      msg.setWindowTitle("Invalid equation")
-      msg.exec_()
       return
     else:
       self.graph_btn.setEnabled(True)
