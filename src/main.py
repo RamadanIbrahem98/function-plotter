@@ -1,18 +1,13 @@
+import sys
+import numpy as np
+import pyqtgraph as pg
 from random import randint
 from PyQt5 import QtWidgets
-import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from UI.qt_designer import Ui_MainWindow
-from validators import get_equation_result, validate_equation
-import pyqtgraph as pg
-import numpy as np
 
-def warning_dialog(title:str, text: str) -> None:
-  msg = QtWidgets.QMessageBox()
-  msg.setIcon(QtWidgets.QMessageBox.Warning)
-  msg.setText(text)
-  msg.setWindowTitle(title)
-  msg.exec_()
+from UI.qt_designer import Ui_MainWindow
+from dialogs import warning_dialog
+from validators import get_equation_result, validate_equation
 
 class MyApp(QMainWindow, Ui_MainWindow):
   def __init__(self):
