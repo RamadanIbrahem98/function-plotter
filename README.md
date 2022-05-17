@@ -69,7 +69,3 @@ Invalid Equations Popup Window
 Invalid Range Because of From being greater than to
 
 ![Invalid Range](docs/InvalidRange.jpg)
-
-Invalid Step. When (Step > To - From) then, no point will be drawn
-
-![Invalid Step](docs/InvalidStep.jpg)
