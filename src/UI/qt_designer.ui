@@ -114,6 +114,38 @@
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
           <layout class="QGridLayout" name="gridLayout">
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="range_to_spin">
+             <property name="statusTip">
+              <string>Upper limit for drawing</string>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>-10000.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>99.989999999999995</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="range_from_label">
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>22</height>
+              </size>
+             </property>
+             <property name="statusTip">
+              <string>Lower limit for drawing</string>
+             </property>
+             <property name="text">
+              <string>From</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="1">
             <widget class="QDoubleSpinBox" name="range_from_spin">
              <property name="statusTip">
@@ -146,73 +178,6 @@
              </property>
              <property name="text">
               <string>To</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="range_step_label">
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="statusTip">
-              <string>resolution for step in the graph</string>
-             </property>
-             <property name="text">
-              <string>Step</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="range_from_label">
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>22</height>
-              </size>
-             </property>
-             <property name="statusTip">
-              <string>Lower limit for drawing</string>
-             </property>
-             <property name="text">
-              <string>From</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QDoubleSpinBox" name="range_to_spin">
-             <property name="statusTip">
-              <string>Upper limit for drawing</string>
-             </property>
-             <property name="decimals">
-              <number>4</number>
-             </property>
-             <property name="minimum">
-              <double>-10000.000000000000000</double>
-             </property>
-             <property name="value">
-              <double>99.989999999999995</double>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QDoubleSpinBox" name="range_step_spin">
-             <property name="statusTip">
-              <string>resolution for step in the graph</string>
-             </property>
-             <property name="decimals">
-              <number>4</number>
-             </property>
-             <property name="maximum">
-              <double>100.000000000000000</double>
-             </property>
-             <property name="stepType">
-              <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
-             </property>
-             <property name="value">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>

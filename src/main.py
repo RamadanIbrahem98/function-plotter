@@ -19,6 +19,9 @@ class MyApp(QMainWindow, Ui_MainWindow):
     self.input_equation_text.textChanged.connect(self.toggle_graph_btn)
     self.actionNew.triggered.connect(self.create_new_window)
     self.actionExit.triggered.connect(self.close)
+
+    self.y_minimums = []
+    self.y_maximums = []
     
     self.plot.setBackground('w')
     self.plot.plotItem.showGrid(True, True)
@@ -40,15 +43,9 @@ class MyApp(QMainWindow, Ui_MainWindow):
     equation = self.input_equation_text.text()
     x_min = self.range_from_spin.value()
     x_max = self.range_to_spin.value()
-    x_step = self.range_step_spin.value()
 
     if x_min >= x_max:
       warning_dialog("Invalid Range", "From has to be less than To.")
-      self.graph_btn.setEnabled(False)
-      return
-
-    if x_step >= x_max - x_min:
-      warning_dialog("Invalid Step", "Step is to big for the range.")
       self.graph_btn.setEnabled(False)
       return
 
@@ -59,18 +56,20 @@ class MyApp(QMainWindow, Ui_MainWindow):
     else:
       self.graph_btn.setEnabled(True)
       y_data = []
-      x_data = np.arange(x_min, x_max + 1, x_step)
+      x_data = np.linspace(x_min, x_max)
       for point in x_data:
         y = get_equation_result(equation, point)
         if type(y) == float:
           y_data.append(y)
         else:
           y_data.append(float('inf'))
-        
+      self.y_minimums.append(min(y_data))
+      self.y_maximums.append(max(y_data))
       self.plot.plot(x_data, y_data, name=f'f(x)={equation}', 
         pen=pg.mkPen(color=(randint(0, 255), randint(0, 255), randint(0, 255)), 
         width=3))
       self.plot.plotItem.addLegend()
+      self.plot.plotItem.setYRange(min(self.y_minimums), max(self.y_maximums))
 
   def clear_graph(self: QApplication) -> None:
     self.plot.clear()
